@@ -3,6 +3,7 @@ var mode;
 let button;
 let bestaatNogNietAl = true;
 let button_lvl1;
+let button_lvl2;
 
 function preload(){
     bg = loadImage("https://images3.persgroep.net/rcs/pDCTCuxNq3RMGE1bspT-zbQM2e8/diocontent/70425715/_crop/1/37/856/484/_fitwidth/763?appId=93a17a8fd81db0de025c8abd1cca1279&quality=0.8");
@@ -31,17 +32,27 @@ function draw() {
   else if (mode==1) {
     
     background(51);
+    text('Kies je level',400,200);
     if(bestaatNogNietAl){
       button_lvl1 = createButton('Level 1');
       button_lvl1.size(200,100);
       button_lvl1.position(200,400);
       button_lvl1.mousePressed(lvl1);
+      button_lvl2 = createButton('Level 2');
+      button_lvl2.size(200,100);
+      button_lvl2.position(500,400);
+      button_lvl2.mousePressed(lvl2);
       bestaatNogNietAl = false;
     }
   }
   else if (mode==2){
     removeElements(button_lvl1);    
     background(bg);
+  }
+  else if (mode==3){
+    removeElements(button_lvl1);
+    removeElements(button_lvl2);      
+    background(69);
   }
 }
 
@@ -53,6 +64,10 @@ function mousePressed() {
 
 function lvl1(){
   mode=2;
+}
+
+function lvl2(){
+  mode=3;
 }
 
 function clearCanvas() {
